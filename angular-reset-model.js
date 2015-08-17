@@ -10,7 +10,7 @@
     'use strict';
 
     angular
-        .module('SandCrate')
+        .module('angular-reset-model',[])
         .directive('resetModel', resetField);
 
     resetField.$inject = ['$rootScope'];

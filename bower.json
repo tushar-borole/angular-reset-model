@@ -1,0 +1,24 @@
+{
+  "name": "angular-reset-model",
+  "description": "Angular reset model Directive",
+  "version": "0.0.0",
+  "authors": [
+    "Tushar Borole <tushariscoolster@gmail.com>"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tushariscoolster/angular-reset-model"
+  },
+  "homepage": "http://tushariscoolster.github.io/angular-reset-model/",
+  "license": "LGPL-2.1",
+  "main": "angular-reset-model.js",
+  "keywords": ["resetmodel",
+               "angular"
+  ],
+  "ignore": [
+    "gh-pages",
+    "node_modules",
+    "bower_components"
+  ],
+  "dependencies": {}
+}

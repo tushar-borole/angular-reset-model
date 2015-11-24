@@ -10,7 +10,7 @@
     'use strict';
 
     angular
-        .module('angular-reset-model',[])
+        .module('angular-reset-model', [])
         .directive('resetModel', resetField);
 
     resetField.$inject = ['$rootScope'];
@@ -31,20 +31,9 @@
 
 
             scope.$watch(attrs.ngModel, function (value) {
-
-
-
                 if (ngModel.$pristine) { //if form is touched or not
-
-
                     ngModel.initialValue = value;
-
-
-
-
                 }
-
-
             });
 
 
@@ -53,7 +42,7 @@
     }
 
     angular
-        .module('SandCrate')
+        .module('angular-reset-model', [])
         .directive('resetModelButton', resetModelButton);
 
     resetModelButton.$inject = ['$rootScope'];
@@ -89,6 +78,60 @@
 
         }
     }
+    
+    angular
+        .module('angular-reset-model', []).directive('resetForm', function ($parse, $compile) {
+    return {
+        require: ['^form', 'ngModel'],
+        link: function (scope, elm, attr, formCtrl) {
+
+            var resetFormValue = angular.isDefined(attr.resetFormValue);
+            var resetFormClear = angular.isDefined(attr.resetFormClear);
+
+
+            formCtrl[0].$resetFormData = function () {
+                if (resetFormValue) { // to set value on form rest
+                    $parse(attr.ngModel).assign(scope, attr.resetFormValue);
+
+                } else {
+
+                    $parse(attr.ngModel).assign(scope, formCtrl[1].initialValue);
+                }
+
+
+
+            };
+
+            formCtrl[0].$resetFormComplete = function () {//reset complete form
+
+                formCtrl[0].$setPristine();
+
+            };
+            scope.$watch(attr.ngModel, function (value) {
+
+
+
+                if (formCtrl[1].$pristine) { //if form is touched or not
+
+
+                    formCtrl[1].initialValue = value;
+
+
+                    if (resetFormClear) { // clear value on reset
+                        formCtrl[1].initialValue = '';
+                    }
+
+
+
+                }
+
+
+            });
+
+
+        }
+    }
+});
 
 
 

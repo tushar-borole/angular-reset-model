@@ -25,9 +25,16 @@ Getting Started
 
     var app=angular.module("you app name",['angular-reset-model'])
 ####  **Using directive**
-
+    single input
     <input type="text" class="my-scroll-area" ng-model="demomodel" reset-model="userSummary">
      <button reset-model-button="userSummary">Cancel</button>
+     
+     Via form
+      <form name="formname">
+    <input class="my-scroll-area" reset-form reset-form-value="hey" reset-form-clear/>
+    <button type="submit" ng-click="formname.$resetFormData()"
+    </form>
+
     
 
 
@@ -38,6 +45,10 @@ Getting Started
  ----------------- | ---------------------------- | ------------------
 | reset-model | `'Field to be reset'` 
 | reset-model-button| `"on clcik which model to be reset"`|
+|reset-form      | It initialize the directive, Only those input will be affected, who has reset-form in html attribute |
+| reset-form-clear     |   It clear the input values, if take to pristine state,in absense of it, it will change to its initial value |
+| reset-form-value |    on reset button click the value of input will change to 'cool' |
+| formname.$resetFormData() |   function to reset the form |
 
 
 
